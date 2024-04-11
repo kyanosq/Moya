@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "Moya"
-  s.version      = "14.0.0"
+  s.version      = "20.0.0"
   s.summary      = "Network abstraction layer written in Swift"
   s.description  = <<-EOS
   Moya abstracts network commands using Swift Generics to provide developers
@@ -13,11 +13,13 @@ Pod::Spec.new do |s|
   s.license      = { :type => "MIT", :file => "License.md" }
   s.author             = { "Ash Furrow" => "ash@ashfurrow.com" }
   s.social_media_url   = "http://twitter.com/ashfurrow"
-  s.ios.deployment_target = '10.0'
-  s.osx.deployment_target = '10.12'
-  s.tvos.deployment_target = '10.0'
-  s.watchos.deployment_target = '3.0'
-  s.source       = { :git => "https://github.com/Moya/Moya.git", :tag => s.version }
+  s.ios.deployment_target = '12.0'
+  s.tvos.deployment_target = '12.0'
+  s.source       = { :git => "https://github.com/kyanosq/Moya.git", :tag => s.version }
+  s.resource_bundles = {
+    'Moya' => ['Sources/PrivacyInfo.xcprivacy']
+  }
+  
   s.default_subspec = "Core"
   s.swift_version = '5.0'
   s.cocoapods_version = '>= 1.4.0'  
@@ -34,9 +36,4 @@ Pod::Spec.new do |s|
     ss.dependency "ReactiveSwift", "~> 6.0"
   end
 
-  s.subspec "RxSwift" do |ss|
-    ss.source_files = "Sources/RxMoya/"
-    ss.dependency "Moya/Core"
-    ss.dependency "RxSwift", "~> 5.0"
-  end
 end
